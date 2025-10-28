@@ -9,6 +9,7 @@ import Pg3 from "./pages/pg3";
 import Pg4 from "./pages/pg4";
 import Pg5 from "./pages/pg5";
 import Pg6 from "./pages/pg6";
+import Pg7 from "./pages/pg7";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/pg4" element={<Pg4 />} />
           <Route path="/pg5" element={<Pg5 />} />
           <Route path="/pg6" element={<Pg6 />} />
+          <Route path="/pg7" element={<Pg7 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

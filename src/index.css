@@ -337,3 +337,109 @@ All colors MUST be HSL.
     );
   }
 }
+
+/* Animação de iluminação vermelha para pg7 */
+@keyframes red-light-sweep {
+  0% {
+    transform: translateX(-100%) translateY(-50%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(50%) translateY(-50%);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) translateY(-50%);
+    opacity: 0;
+  }
+}
+
+@keyframes ambient-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pg7-background {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luz principal que se move */
+.pg7-background::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 40%;
+  height: 200%;
+  background: radial-gradient(ellipse at center,
+    rgba(139, 0, 0, 0.4) 0%,
+    rgba(120, 0, 0, 0.3) 20%,
+    rgba(100, 0, 0, 0.2) 40%,
+    rgba(80, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
+  animation: red-light-sweep 12s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+/* Luz ambiente sutil */
+.pg7-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 50%,
+    rgba(139, 0, 0, 0.08) 0%,
+    transparent 50%
+  ),
+  radial-gradient(circle at 70% 50%,
+    rgba(120, 0, 0, 0.06) 0%,
+    transparent 50%
+  );
+  animation: ambient-glow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garante que o conteúdo fique acima */
+.pg7-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Otimizações mobile */
+@media (max-width: 640px) {
+  .pg7-background::before {
+    width: 50%;
+    filter: blur(50px);
+    animation: red-light-sweep 14s ease-in-out infinite;
+    background: radial-gradient(ellipse at center,
+      rgba(139, 0, 0, 0.3) 0%,
+      rgba(120, 0, 0, 0.2) 30%,
+      rgba(100, 0, 0, 0.15) 50%,
+      transparent 70%
+    );
+  }
+  
+  .pg7-background::after {
+    background: radial-gradient(circle at 50% 50%,
+      rgba(139, 0, 0, 0.06) 0%,
+      transparent 60%
+    );
+  }
+}
