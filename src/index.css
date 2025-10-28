@@ -130,147 +130,123 @@ All colors MUST be HSL.
   animation: whatsapp-glow 4s ease-in-out infinite;
 }
 
-/* Animações avançadas para logo pg4 */
-@keyframes logo-float {
+/* Animações profissionais para logo pg4 - Mobile optimized */
+@keyframes logo-float-smooth {
   0%, 100% {
-    transform: translateY(0px) scale(1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-15px) scale(1.03);
+    transform: translateY(-10px);
   }
 }
 
-@keyframes logo-glow-pulse {
+@keyframes logo-glow-red {
   0%, 100% {
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3))
-            drop-shadow(0 0 40px rgba(255, 165, 0, 0.2))
-            drop-shadow(0 0 60px rgba(255, 69, 0, 0.1));
+    filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.25))
+            drop-shadow(0 0 50px rgba(185, 28, 28, 0.15));
   }
   50% {
-    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6))
-            drop-shadow(0 0 60px rgba(255, 165, 0, 0.4))
-            drop-shadow(0 0 90px rgba(255, 69, 0, 0.3));
+    filter: drop-shadow(0 0 35px rgba(220, 38, 38, 0.35))
+            drop-shadow(0 0 70px rgba(185, 28, 28, 0.2));
   }
 }
 
-@keyframes rotate-gradient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes sparkle {
+@keyframes subtle-pulse {
   0%, 100% {
-    opacity: 0;
-    transform: scale(0);
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 
 .logo-container-pg4 {
   position: relative;
   display: inline-block;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .logo-animated {
-  animation: logo-float 6s ease-in-out infinite,
-             logo-glow-pulse 4s ease-in-out infinite;
+  animation: logo-float-smooth 8s ease-in-out infinite,
+             logo-glow-red 5s ease-in-out infinite;
   position: relative;
   z-index: 2;
+  will-change: transform, filter;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* Background glow circular */
+/* Glow circular minimalista */
 .logo-container-pg4::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle, 
-    rgba(255, 215, 0, 0.15) 0%,
-    rgba(255, 165, 0, 0.1) 25%,
-    rgba(255, 69, 0, 0.05) 50%,
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at center, 
+    rgba(220, 38, 38, 0.12) 0%,
+    rgba(185, 28, 28, 0.08) 30%,
+    rgba(153, 27, 27, 0.04) 50%,
     transparent 70%
   );
   border-radius: 50%;
-  animation: logo-glow-pulse 4s ease-in-out infinite;
+  animation: subtle-pulse 6s ease-in-out infinite;
   z-index: 1;
+  filter: blur(40px);
+  will-change: opacity, transform;
 }
 
-/* Rotating gradient ring */
+/* Anel externo suave */
 .logo-container-pg4::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 130%;
-  height: 130%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(255, 215, 0, 0.3) 90deg,
-    rgba(255, 165, 0, 0.3) 180deg,
-    rgba(255, 69, 0, 0.3) 270deg,
-    transparent 360deg
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle at center,
+    transparent 0%,
+    transparent 45%,
+    rgba(220, 38, 38, 0.06) 50%,
+    transparent 55%
   );
   border-radius: 50%;
-  animation: rotate-gradient 8s linear infinite;
+  animation: subtle-pulse 8s ease-in-out infinite reverse;
   z-index: 0;
-  filter: blur(20px);
+  filter: blur(30px);
+  will-change: opacity, transform;
 }
 
-/* Sparkle particles */
+/* Remove sparkles - mais clean e profissional */
 .sparkle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 3;
+  display: none;
 }
 
-.sparkle:nth-child(1) {
-  top: 10%;
-  left: 10%;
-  animation: sparkle 3s ease-in-out infinite;
-}
-
-.sparkle:nth-child(2) {
-  top: 20%;
-  right: 15%;
-  animation: sparkle 3.5s ease-in-out infinite 0.5s;
-}
-
-.sparkle:nth-child(3) {
-  bottom: 15%;
-  left: 20%;
-  animation: sparkle 4s ease-in-out infinite 1s;
-}
-
-.sparkle:nth-child(4) {
-  bottom: 10%;
-  right: 10%;
-  animation: sparkle 3.2s ease-in-out infinite 1.5s;
-}
-
-.sparkle:nth-child(5) {
-  top: 50%;
-  left: 5%;
-  animation: sparkle 3.8s ease-in-out infinite 0.8s;
-}
-
-.sparkle:nth-child(6) {
-  top: 50%;
-  right: 5%;
-  animation: sparkle 4.2s ease-in-out infinite 2s;
+/* Otimizações para mobile */
+@media (max-width: 640px) {
+  .logo-container-pg4::before {
+    filter: blur(30px);
+    width: 130%;
+    height: 130%;
+  }
+  
+  .logo-container-pg4::after {
+    filter: blur(25px);
+    width: 150%;
+    height: 150%;
+  }
+  
+  .logo-animated {
+    animation: logo-float-smooth 10s ease-in-out infinite,
+               logo-glow-red 6s ease-in-out infinite;
+  }
 }

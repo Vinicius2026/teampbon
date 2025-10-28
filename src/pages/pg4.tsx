@@ -10,12 +10,6 @@ const Pg4 = () => {
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl">
         <div className="mb-12 animate-fade-in logo-container-pg4">
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
           <img 
             src={pbLogo} 
             alt="Team PB 2.0 Logo" 
