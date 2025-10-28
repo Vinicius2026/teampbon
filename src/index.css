@@ -251,50 +251,41 @@ All colors MUST be HSL.
   }
 }
 
-/* Animações intensificadas para pg5 */
-@keyframes logo-rotate-float {
-  0% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-12px) rotate(-3deg) scale(1.02);
+/* Animações profissionais pg5 - Ultra smooth */
+@keyframes logo-smooth-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
   }
   50% {
-    transform: translateY(-18px) rotate(0deg) scale(1.04);
-  }
-  75% {
-    transform: translateY(-12px) rotate(3deg) scale(1.02);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
+    transform: translateY(-8px) scale(1.015);
   }
 }
 
-@keyframes intense-red-glow {
+@keyframes premium-red-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.5))
-            drop-shadow(0 0 60px rgba(220, 38, 38, 0.4))
-            drop-shadow(0 0 90px rgba(185, 28, 28, 0.3));
+    filter: drop-shadow(0 0 35px rgba(239, 68, 68, 0.4))
+            drop-shadow(0 0 70px rgba(220, 38, 38, 0.3))
+            drop-shadow(0 0 105px rgba(185, 28, 28, 0.2));
   }
   50% {
-    filter: drop-shadow(0 0 45px rgba(239, 68, 68, 0.7))
-            drop-shadow(0 0 90px rgba(220, 38, 38, 0.6))
-            drop-shadow(0 0 120px rgba(185, 28, 28, 0.5));
+    filter: drop-shadow(0 0 50px rgba(239, 68, 68, 0.55))
+            drop-shadow(0 0 100px rgba(220, 38, 38, 0.45))
+            drop-shadow(0 0 150px rgba(185, 28, 28, 0.35));
   }
 }
 
-@keyframes intense-pulse {
+@keyframes smooth-pulse {
   0%, 100% {
-    opacity: 0.6;
+    opacity: 0.5;
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.15);
   }
 }
 
-@keyframes rotate-ring {
+@keyframes ultra-smooth-rotate {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
@@ -309,82 +300,119 @@ All colors MUST be HSL.
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translateZ(0) scale(1);
+  transform: translateZ(0) scale(1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .logo-animated-pg5 {
-  animation: logo-rotate-float 7s ease-in-out infinite,
-             intense-red-glow 3.5s ease-in-out infinite;
+  animation: logo-smooth-float 9s ease-in-out infinite,
+             premium-red-glow 6s ease-in-out infinite;
   position: relative;
   z-index: 2;
   will-change: transform, filter;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Glow interno intenso */
+/* Glow circular interno - ultra suave */
 .logo-container-pg5::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 150%;
-  height: 150%;
+  width: 160%;
+  height: 160%;
   background: radial-gradient(circle at center, 
-    rgba(239, 68, 68, 0.25) 0%,
-    rgba(220, 38, 38, 0.18) 30%,
-    rgba(185, 28, 28, 0.12) 50%,
-    rgba(153, 27, 27, 0.06) 70%,
-    transparent 90%
+    rgba(239, 68, 68, 0.18) 0%,
+    rgba(220, 38, 38, 0.14) 25%,
+    rgba(185, 28, 28, 0.10) 45%,
+    rgba(153, 27, 27, 0.06) 65%,
+    rgba(127, 29, 29, 0.03) 80%,
+    transparent 100%
   );
   border-radius: 50%;
-  animation: intense-pulse 4s ease-in-out infinite;
+  animation: smooth-pulse 7s ease-in-out infinite;
   z-index: 1;
-  filter: blur(50px);
+  filter: blur(60px);
   will-change: opacity, transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* Anel externo rotativo com gradiente */
+/* Anel rotativo com blur extremo para suavidade */
 .logo-container-pg5::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180%;
-  height: 180%;
+  width: 200%;
+  height: 200%;
   background: conic-gradient(
     from 0deg,
-    rgba(239, 68, 68, 0.3) 0deg,
-    rgba(220, 38, 38, 0.2) 90deg,
+    rgba(239, 68, 68, 0.2) 0deg,
+    rgba(220, 38, 38, 0.15) 60deg,
+    rgba(185, 28, 28, 0.12) 120deg,
     transparent 180deg,
-    rgba(185, 28, 28, 0.2) 270deg,
-    rgba(239, 68, 68, 0.3) 360deg
+    rgba(185, 28, 28, 0.12) 240deg,
+    rgba(220, 38, 38, 0.15) 300deg,
+    rgba(239, 68, 68, 0.2) 360deg
   );
   border-radius: 50%;
-  animation: rotate-ring 6s linear infinite;
+  animation: ultra-smooth-rotate 10s linear infinite;
   z-index: 0;
-  filter: blur(35px);
+  filter: blur(70px);
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* Otimizações mobile para pg5 */
+/* Otimizações específicas mobile - Anti-aliasing máximo */
 @media (max-width: 640px) {
   .logo-container-pg5::before {
-    filter: blur(40px);
-    width: 140%;
-    height: 140%;
+    filter: blur(80px);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, 
+      rgba(239, 68, 68, 0.14) 0%,
+      rgba(220, 38, 38, 0.10) 30%,
+      rgba(185, 28, 28, 0.07) 50%,
+      rgba(153, 27, 27, 0.04) 70%,
+      transparent 100%
+    );
   }
   
   .logo-container-pg5::after {
-    filter: blur(30px);
-    width: 170%;
-    height: 170%;
+    filter: blur(90px);
+    width: 180%;
+    height: 180%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(239, 68, 68, 0.15) 0deg,
+      rgba(220, 38, 38, 0.10) 90deg,
+      transparent 180deg,
+      rgba(220, 38, 38, 0.10) 270deg,
+      rgba(239, 68, 68, 0.15) 360deg
+    );
   }
   
   .logo-animated-pg5 {
-    animation: logo-rotate-float 9s ease-in-out infinite,
-               intense-red-glow 4.5s ease-in-out infinite;
+    animation: logo-smooth-float 11s ease-in-out infinite,
+               premium-red-glow 7s ease-in-out infinite;
+  }
+  
+  /* Force hardware acceleration on mobile */
+  .logo-container-pg5,
+  .logo-animated-pg5,
+  .logo-container-pg5::before,
+  .logo-container-pg5::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
   }
 }
