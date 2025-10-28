@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
-import pbLogo from "@/assets/team-pb-20-logo-4.png";
+import pbLogo from "@/assets/team-pb-20-logo-2.png";
 
 const Pg3 = () => {
   const whatsappNumber = "+5521999999999";
