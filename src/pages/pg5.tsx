@@ -9,11 +9,11 @@ const Pg5 = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl">
-        <div className="mb-12 animate-fade-in logo-container-pg4">
+        <div className="mb-12 animate-fade-in logo-container-pg5">
           <img 
             src={pbLogo} 
             alt="Team PB 2.0 Logo" 
-            className="w-60 h-60 sm:w-80 sm:h-80 object-contain logo-animated"
+            className="w-60 h-60 sm:w-80 sm:h-80 object-contain logo-animated-pg5"
           />
         </div>
         
