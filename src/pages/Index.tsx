@@ -7,8 +7,8 @@ const Index = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}`;
   
   return (
-    <div className="flex min-h-screen flex-col items-center px-4">
-      <main className="flex flex-col items-center flex-1 w-full max-w-2xl pt-24">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4">
+      <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl">
         <div className="mb-12 animate-fade-in">
           <img 
             src={pbLogo} 
@@ -34,7 +34,7 @@ const Index = () => {
         </a>
       </main>
 
-      <footer className="w-full py-6 text-center text-sm text-muted-foreground">
+      <footer className="w-full py-4 mt-8 text-center text-sm text-muted-foreground">
         <p>Copyright © {new Date().getFullYear()} TEAM PB. Todos os direitos reservados.</p>
       </footer>
     </div>
