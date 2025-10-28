@@ -129,3 +129,148 @@ All colors MUST be HSL.
 .animate-whatsapp-glow {
   animation: whatsapp-glow 4s ease-in-out infinite;
 }
+
+/* Animações avançadas para logo pg4 */
+@keyframes logo-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.03);
+  }
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3))
+            drop-shadow(0 0 40px rgba(255, 165, 0, 0.2))
+            drop-shadow(0 0 60px rgba(255, 69, 0, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6))
+            drop-shadow(0 0 60px rgba(255, 165, 0, 0.4))
+            drop-shadow(0 0 90px rgba(255, 69, 0, 0.3));
+  }
+}
+
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logo-container-pg4 {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-animated {
+  animation: logo-float 6s ease-in-out infinite,
+             logo-glow-pulse 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background glow circular */
+.logo-container-pg4::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, 
+    rgba(255, 215, 0, 0.15) 0%,
+    rgba(255, 165, 0, 0.1) 25%,
+    rgba(255, 69, 0, 0.05) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: logo-glow-pulse 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Rotating gradient ring */
+.logo-container-pg4::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  height: 130%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 215, 0, 0.3) 90deg,
+    rgba(255, 165, 0, 0.3) 180deg,
+    rgba(255, 69, 0, 0.3) 270deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+  animation: rotate-gradient 8s linear infinite;
+  z-index: 0;
+  filter: blur(20px);
+}
+
+/* Sparkle particles */
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.sparkle:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.sparkle:nth-child(2) {
+  top: 20%;
+  right: 15%;
+  animation: sparkle 3.5s ease-in-out infinite 0.5s;
+}
+
+.sparkle:nth-child(3) {
+  bottom: 15%;
+  left: 20%;
+  animation: sparkle 4s ease-in-out infinite 1s;
+}
+
+.sparkle:nth-child(4) {
+  bottom: 10%;
+  right: 10%;
+  animation: sparkle 3.2s ease-in-out infinite 1.5s;
+}
+
+.sparkle:nth-child(5) {
+  top: 50%;
+  left: 5%;
+  animation: sparkle 3.8s ease-in-out infinite 0.8s;
+}
+
+.sparkle:nth-child(6) {
+  top: 50%;
+  right: 5%;
+  animation: sparkle 4.2s ease-in-out infinite 2s;
+}
