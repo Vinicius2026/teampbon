@@ -251,168 +251,89 @@ All colors MUST be HSL.
   }
 }
 
-/* Animações profissionais pg5 - Ultra smooth */
-@keyframes logo-smooth-float {
+/* Animações pg5 - Mobile Safe & Optimized */
+@keyframes logo-simple-float {
   0%, 100% {
-    transform: translateY(0px) scale(1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px) scale(1.015);
+    transform: translateY(-10px);
   }
 }
 
-@keyframes premium-red-glow {
+@keyframes simple-red-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 35px rgba(239, 68, 68, 0.4))
-            drop-shadow(0 0 70px rgba(220, 38, 38, 0.3))
-            drop-shadow(0 0 105px rgba(185, 28, 28, 0.2));
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.3))
+            drop-shadow(0 0 40px rgba(220, 38, 38, 0.2));
   }
   50% {
-    filter: drop-shadow(0 0 50px rgba(239, 68, 68, 0.55))
-            drop-shadow(0 0 100px rgba(220, 38, 38, 0.45))
-            drop-shadow(0 0 150px rgba(185, 28, 28, 0.35));
+    filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.4))
+            drop-shadow(0 0 60px rgba(220, 38, 38, 0.3));
   }
 }
 
-@keyframes smooth-pulse {
+@keyframes simple-pulse {
   0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
     opacity: 0.5;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 0.75;
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-}
-
-@keyframes ultra-smooth-rotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 .logo-container-pg5 {
   position: relative;
   display: inline-block;
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0) scale(1);
-  transform: translateZ(0) scale(1);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .logo-animated-pg5 {
-  animation: logo-smooth-float 9s ease-in-out infinite,
-             premium-red-glow 6s ease-in-out infinite;
+  animation: logo-simple-float 8s ease-in-out infinite,
+             simple-red-glow 5s ease-in-out infinite;
   position: relative;
   z-index: 2;
-  will-change: transform, filter;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
-/* Glow circular interno - ultra suave */
+/* Glow simples - apenas um elemento */
 .logo-container-pg5::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 160%;
-  height: 160%;
-  background: radial-gradient(circle at center, 
-    rgba(239, 68, 68, 0.18) 0%,
-    rgba(220, 38, 38, 0.14) 25%,
-    rgba(185, 28, 28, 0.10) 45%,
-    rgba(153, 27, 27, 0.06) 65%,
-    rgba(127, 29, 29, 0.03) 80%,
-    transparent 100%
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, 
+    rgba(239, 68, 68, 0.15) 0%,
+    rgba(220, 38, 38, 0.10) 40%,
+    transparent 70%
   );
   border-radius: 50%;
-  animation: smooth-pulse 7s ease-in-out infinite;
+  animation: simple-pulse 6s ease-in-out infinite;
   z-index: 1;
-  filter: blur(60px);
-  will-change: opacity, transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  filter: blur(40px);
+  pointer-events: none;
 }
 
-/* Anel rotativo com blur extremo para suavidade */
+/* Remove o ::after que pode causar problemas no mobile */
 .logo-container-pg5::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    rgba(239, 68, 68, 0.2) 0deg,
-    rgba(220, 38, 38, 0.15) 60deg,
-    rgba(185, 28, 28, 0.12) 120deg,
-    transparent 180deg,
-    rgba(185, 28, 28, 0.12) 240deg,
-    rgba(220, 38, 38, 0.15) 300deg,
-    rgba(239, 68, 68, 0.2) 360deg
-  );
-  border-radius: 50%;
-  animation: ultra-smooth-rotate 10s linear infinite;
-  z-index: 0;
-  filter: blur(70px);
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  display: none;
 }
 
-/* Otimizações específicas mobile - Anti-aliasing máximo */
+/* Mobile específico - ainda mais simplificado */
 @media (max-width: 640px) {
-  .logo-container-pg5::before {
-    filter: blur(80px);
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(circle at center, 
-      rgba(239, 68, 68, 0.14) 0%,
-      rgba(220, 38, 38, 0.10) 30%,
-      rgba(185, 28, 28, 0.07) 50%,
-      rgba(153, 27, 27, 0.04) 70%,
-      transparent 100%
-    );
-  }
-  
-  .logo-container-pg5::after {
-    filter: blur(90px);
-    width: 180%;
-    height: 180%;
-    background: conic-gradient(
-      from 0deg,
-      rgba(239, 68, 68, 0.15) 0deg,
-      rgba(220, 38, 38, 0.10) 90deg,
-      transparent 180deg,
-      rgba(220, 38, 38, 0.10) 270deg,
-      rgba(239, 68, 68, 0.15) 360deg
-    );
-  }
-  
   .logo-animated-pg5 {
-    animation: logo-smooth-float 11s ease-in-out infinite,
-               premium-red-glow 7s ease-in-out infinite;
+    animation: logo-simple-float 10s ease-in-out infinite,
+               simple-red-glow 7s ease-in-out infinite;
   }
   
-  /* Force hardware acceleration on mobile */
-  .logo-container-pg5,
-  .logo-animated-pg5,
-  .logo-container-pg5::before,
-  .logo-container-pg5::after {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
+  .logo-container-pg5::before {
+    width: 130%;
+    height: 130%;
+    filter: blur(35px);
+    background: radial-gradient(circle, 
+      rgba(239, 68, 68, 0.12) 0%,
+      rgba(220, 38, 38, 0.08) 50%,
+      transparent 80%
+    );
   }
 }

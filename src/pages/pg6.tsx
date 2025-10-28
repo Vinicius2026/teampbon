@@ -13,7 +13,7 @@ const Pg6 = () => {
           <img 
             src={pbLogo} 
             alt="Team PB 2.0 Logo" 
-            className="w-60 h-60 sm:w-80 sm:h-80 object-contain"
+            className="w-72 h-72 sm:w-96 sm:h-96 object-contain"
           />
         </div>
         
