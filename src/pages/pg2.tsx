@@ -7,8 +7,8 @@ const Pg2 = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}`;
   
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4">
-      <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl">
+    <div className="flex min-h-screen flex-col items-center px-4">
+      <main className="flex flex-col items-center flex-1 w-full max-w-2xl pt-24">
         <div className="mb-12 animate-fade-in">
           <img 
             src={pbLogo} 
