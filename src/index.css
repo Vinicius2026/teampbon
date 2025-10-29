@@ -130,6 +130,22 @@ All colors MUST be HSL.
   animation: whatsapp-glow 4s ease-in-out infinite;
 }
 
+/* Animação fade-in básica */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
 /* Animações profissionais para logo pg4 - Mobile optimized */
 @keyframes logo-float-smooth {
   0%, 100% {
@@ -231,23 +247,23 @@ All colors MUST be HSL.
   display: none;
 }
 
-/* Otimizações para mobile */
+/* Otimizações para mobile - Reduz complexidade */
 @media (max-width: 640px) {
   .logo-container-pg4::before {
-    filter: blur(30px);
-    width: 130%;
-    height: 130%;
+    filter: blur(20px);
+    width: 120%;
+    height: 120%;
   }
   
   .logo-container-pg4::after {
-    filter: blur(25px);
-    width: 150%;
-    height: 150%;
+    filter: blur(15px);
+    width: 140%;
+    height: 140%;
   }
   
   .logo-animated {
-    animation: logo-float-smooth 10s ease-in-out infinite,
-               logo-glow-red 6s ease-in-out infinite;
+    animation: logo-float-smooth 12s ease-in-out infinite,
+               logo-glow-red 8s ease-in-out infinite;
   }
 }
 
@@ -426,20 +442,63 @@ All colors MUST be HSL.
 @media (max-width: 640px) {
   .pg7-background::before {
     width: 50%;
-    filter: blur(50px);
-    animation: red-light-sweep 14s ease-in-out infinite;
+    filter: blur(30px);
+    animation: red-light-sweep 16s ease-in-out infinite;
     background: radial-gradient(ellipse at center,
-      rgba(139, 0, 0, 0.3) 0%,
-      rgba(120, 0, 0, 0.2) 30%,
-      rgba(100, 0, 0, 0.15) 50%,
+      rgba(139, 0, 0, 0.25) 0%,
+      rgba(120, 0, 0, 0.15) 30%,
+      rgba(100, 0, 0, 0.10) 50%,
       transparent 70%
     );
   }
   
   .pg7-background::after {
     background: radial-gradient(circle at 50% 50%,
-      rgba(139, 0, 0, 0.06) 0%,
+      rgba(139, 0, 0, 0.05) 0%,
       transparent 60%
     );
+  }
+}
+
+/* Suporte para preferência de movimento reduzido (iOS/Acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  .pg7-background::before,
+  .pg7-background::after,
+  .logo-animated,
+  .logo-container-pg4::before,
+  .logo-container-pg4::after,
+  .animate-fade-in,
+  .animate-whatsapp-glow {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .logo-animated {
+    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3));
+  }
+}
+
+/* Otimizações específicas iOS - Desabilita animações complexas */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari */
+  .pg7-background::before {
+    filter: blur(20px) !important;
+    animation-duration: 18s !important;
+  }
+  
+  .logo-container-pg4::before {
+    filter: blur(20px) !important;
+  }
+  
+  .logo-container-pg4::after {
+    filter: blur(15px) !important;
+  }
+  
+  /* Remove will-change para melhor performance no iOS */
+  .logo-container-pg4,
+  .logo-animated,
+  .logo-container-pg4::before,
+  .logo-container-pg4::after {
+    will-change: auto !important;
   }
 }
