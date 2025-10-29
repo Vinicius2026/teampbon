@@ -158,23 +158,23 @@ All colors MUST be HSL.
 
 @keyframes logo-glow-red {
   0%, 100% {
-    filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.25))
-            drop-shadow(0 0 50px rgba(185, 28, 28, 0.15));
+    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3))
+            drop-shadow(0 0 40px rgba(185, 28, 28, 0.18));
   }
   50% {
-    filter: drop-shadow(0 0 35px rgba(220, 38, 38, 0.35))
-            drop-shadow(0 0 70px rgba(185, 28, 28, 0.2));
+    filter: drop-shadow(0 0 22px rgba(220, 38, 38, 0.32))
+            drop-shadow(0 0 44px rgba(185, 28, 28, 0.2));
   }
 }
 
 @keyframes subtle-pulse {
   0%, 100% {
-    opacity: 0.4;
+    opacity: 0.35;
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.45;
+    transform: translate(-50%, -50%) scale(1.05);
   }
 }
 
@@ -189,11 +189,10 @@ All colors MUST be HSL.
 }
 
 .logo-animated {
-  animation: logo-float-smooth 8s ease-in-out infinite,
-             logo-glow-red 5s ease-in-out infinite;
+  animation: logo-float-smooth 8s ease-in-out infinite;
   position: relative;
   z-index: 2;
-  will-change: transform, filter;
+  filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3)) drop-shadow(0 0 40px rgba(185, 28, 28, 0.18));
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -214,7 +213,7 @@ All colors MUST be HSL.
     transparent 70%
   );
   border-radius: 50%;
-  animation: subtle-pulse 6s ease-in-out infinite;
+  animation: subtle-pulse 10s ease-in-out infinite;
   z-index: 1;
   filter: blur(40px);
   will-change: opacity, transform;
@@ -236,7 +235,7 @@ All colors MUST be HSL.
     transparent 55%
   );
   border-radius: 50%;
-  animation: subtle-pulse 8s ease-in-out infinite reverse;
+  animation: subtle-pulse 12s ease-in-out infinite reverse;
   z-index: 0;
   filter: blur(30px);
   will-change: opacity, transform;
@@ -262,8 +261,8 @@ All colors MUST be HSL.
   }
   
   .logo-animated {
-    animation: logo-float-smooth 12s ease-in-out infinite,
-               logo-glow-red 8s ease-in-out infinite;
+    animation: logo-float-smooth 10s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(220, 38, 38, 0.28)) drop-shadow(0 0 36px rgba(185, 28, 28, 0.16));
   }
 }
 
@@ -487,18 +486,26 @@ All colors MUST be HSL.
   }
   
   .logo-container-pg4::before {
-    filter: blur(20px) !important;
+    filter: blur(15px) !important;
+    animation-duration: 10s !important;
   }
   
   .logo-container-pg4::after {
-    filter: blur(15px) !important;
+    filter: blur(12px) !important;
+    animation-duration: 12s !important;
   }
   
-  /* Remove will-change para melhor performance no iOS */
+  /* Remove will-change e glow pulsante para melhor performance no iOS */
   .logo-container-pg4,
   .logo-animated,
   .logo-container-pg4::before,
   .logo-container-pg4::after {
     will-change: auto !important;
+  }
+  
+  /* Logo com brilho estático no iOS (sem piscar) */
+  .logo-animated {
+    animation: logo-float-smooth 12s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 16px rgba(220, 38, 38, 0.25)) !important;
   }
 }
