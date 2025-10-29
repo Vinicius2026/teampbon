@@ -3,17 +3,18 @@ import { MessageCircle } from "lucide-react";
 import pbLogo from "@/assets/team-pb-20-logo-4.png";
 
 const Index = () => {
-  const whatsappNumber = "+5521999999999";
-  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}`;
+  const whatsappNumber = "+5521989319725";
+  const whatsappMessage = "Olá! Vim através do site e gostaria de conversar com o Time PB.";
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace(/[^0-9]/g, "")}&text=${encodeURIComponent(whatsappMessage)}`;
   
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4">
-      <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl">
-        <div className="mb-12 animate-fade-in">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 pg7-background">
+      <main className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl pg7-content">
+        <div className="mb-12 animate-fade-in logo-container-pg4">
           <img 
             src={pbLogo} 
             alt="Team PB 2.0 Logo" 
-            className="w-60 h-60 sm:w-80 sm:h-80 object-contain"
+            className="w-60 h-60 sm:w-80 sm:h-80 object-contain logo-animated"
           />
         </div>
         
