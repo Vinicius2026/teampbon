@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Team PB - Página Inicial</title>
     <meta name="description" content="Entre em contato com o time PB pelo WhatsApp" />
     <meta name="author" content="PB" />
@@ -18,9 +19,33 @@
     <meta name="twitter:title" content="Team PB - Página Inicial" />
     <meta name="twitter:description" content="Entre em contato com o time PB pelo WhatsApp" />
     <meta name="twitter:image" content="/og-image.png" />
+    <style>
+      /* Loading inicial para garantir que algo apareça */
+      #root:empty::after {
+        content: 'Carregando...';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 1.2rem;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #000;
+      }
+    </style>
   </head>
 
   <body>
+    <noscript>
+      <div style="display: flex; min-height: 100vh; align-items: center; justify-content: center; flex-direction: column; padding: 20px; text-align: center; background: #000; color: #fff;">
+        <h1>Team PB</h1>
+        <p>Por favor, habilite o JavaScript para visualizar este site.</p>
+        <a href="https://api.whatsapp.com/send?phone=5521989319725" style="color: #25D366; text-decoration: underline; margin-top: 20px;">Falar no WhatsApp</a>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

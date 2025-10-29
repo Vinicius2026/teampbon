@@ -406,7 +406,7 @@ All colors MUST be HSL.
   );
   animation: red-light-sweep 12s ease-in-out infinite;
   pointer-events: none;
-  filter: blur(60px);
+  filter: blur(30px);
   z-index: 0;
 }
 
@@ -481,18 +481,18 @@ All colors MUST be HSL.
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari */
   .pg7-background::before {
-    filter: blur(20px) !important;
-    animation-duration: 18s !important;
+    filter: blur(15px) !important;
+    animation-duration: 20s !important;
   }
   
   .logo-container-pg4::before {
-    filter: blur(15px) !important;
-    animation-duration: 10s !important;
+    filter: blur(10px) !important;
+    animation-duration: 12s !important;
   }
   
   .logo-container-pg4::after {
-    filter: blur(12px) !important;
-    animation-duration: 12s !important;
+    filter: blur(8px) !important;
+    animation-duration: 14s !important;
   }
   
   /* Remove will-change e glow pulsante para melhor performance no iOS */
@@ -507,5 +507,58 @@ All colors MUST be HSL.
   .logo-animated {
     animation: logo-float-smooth 12s ease-in-out infinite !important;
     filter: drop-shadow(0 0 16px rgba(220, 38, 38, 0.25)) !important;
+  }
+}
+
+/* Detecção de WebView in-app (Instagram, Facebook, etc) */
+@media (max-width: 768px) and (hover: none) {
+  /* Dispositivos móveis sem hover = provável WebView */
+  
+  /* Desabilita blur completamente em WebViews - causa travamento */
+  .pg7-background::before,
+  .pg7-background::after {
+    filter: none !important;
+    opacity: 0.5 !important;
+  }
+  
+  .logo-container-pg4::before,
+  .logo-container-pg4::after {
+    filter: none !important;
+    opacity: 0.4 !important;
+  }
+  
+  /* Simplifica animações */
+  .pg7-background::before {
+    animation-duration: 25s !important;
+  }
+  
+  .logo-animated {
+    animation: logo-float-smooth 14s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.2)) !important;
+  }
+  
+  /* Remove animações de fade-in que podem atrasar o carregamento */
+  .animate-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Fallback extremo para navegadores muito limitados */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  @supports not (backdrop-filter: blur(1px)) {
+    /* Navegador não suporta blur moderno */
+    .pg7-background::before,
+    .pg7-background::after,
+    .logo-container-pg4::before,
+    .logo-container-pg4::after {
+      display: none !important;
+    }
+    
+    .logo-animated {
+      animation: logo-float-smooth 15s ease-in-out infinite !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
   }
 }
