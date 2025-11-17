@@ -152,29 +152,29 @@ All colors MUST be HSL.
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
 }
 
 @keyframes logo-glow-red {
   0%, 100% {
-    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3))
-            drop-shadow(0 0 40px rgba(185, 28, 28, 0.18));
+    filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.35))
+            drop-shadow(0 0 50px rgba(185, 28, 28, 0.2));
   }
   50% {
-    filter: drop-shadow(0 0 22px rgba(220, 38, 38, 0.32))
-            drop-shadow(0 0 44px rgba(185, 28, 28, 0.2));
+    filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.42))
+            drop-shadow(0 0 60px rgba(185, 28, 28, 0.25));
   }
 }
 
 @keyframes subtle-pulse {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.5;
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 0.45;
-    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(1.08);
   }
 }
 
@@ -189,10 +189,10 @@ All colors MUST be HSL.
 }
 
 .logo-animated {
-  animation: logo-float-smooth 8s ease-in-out infinite;
+  animation: logo-float-smooth 7s ease-in-out infinite,
+             logo-glow-red 5.5s ease-in-out infinite;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.3)) drop-shadow(0 0 40px rgba(185, 28, 28, 0.18));
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -207,15 +207,16 @@ All colors MUST be HSL.
   width: 140%;
   height: 140%;
   background: radial-gradient(circle at center, 
-    rgba(220, 38, 38, 0.12) 0%,
-    rgba(185, 28, 28, 0.08) 30%,
-    rgba(153, 27, 27, 0.04) 50%,
-    transparent 70%
+    rgba(220, 38, 38, 0.18) 0%,
+    rgba(185, 28, 28, 0.12) 30%,
+    rgba(153, 27, 27, 0.08) 50%,
+    rgba(127, 29, 29, 0.04) 65%,
+    transparent 80%
   );
   border-radius: 50%;
-  animation: subtle-pulse 10s ease-in-out infinite;
+  animation: subtle-pulse 7s ease-in-out infinite;
   z-index: 1;
-  filter: blur(40px);
+  filter: blur(45px);
   will-change: opacity, transform;
 }
 
@@ -230,14 +231,14 @@ All colors MUST be HSL.
   height: 160%;
   background: radial-gradient(circle at center,
     transparent 0%,
-    transparent 45%,
-    rgba(220, 38, 38, 0.06) 50%,
-    transparent 55%
+    transparent 40%,
+    rgba(220, 38, 38, 0.1) 50%,
+    transparent 60%
   );
   border-radius: 50%;
-  animation: subtle-pulse 12s ease-in-out infinite reverse;
+  animation: subtle-pulse 9s ease-in-out infinite reverse;
   z-index: 0;
-  filter: blur(30px);
+  filter: blur(35px);
   will-change: opacity, transform;
 }
 
@@ -261,8 +262,16 @@ All colors MUST be HSL.
   }
   
   .logo-animated {
-    animation: logo-float-smooth 10s ease-in-out infinite;
-    filter: drop-shadow(0 0 18px rgba(220, 38, 38, 0.28)) drop-shadow(0 0 36px rgba(185, 28, 28, 0.16));
+    animation: logo-float-smooth 8.5s ease-in-out infinite,
+               logo-glow-red 6.5s ease-in-out infinite;
+  }
+  
+  .logo-container-pg4::before {
+    animation-duration: 7.5s;
+  }
+  
+  .logo-container-pg4::after {
+    animation-duration: 8.5s;
   }
 }
 
@@ -503,10 +512,27 @@ All colors MUST be HSL.
     will-change: auto !important;
   }
   
-  /* Logo com brilho estático no iOS (sem piscar) */
+  /* Logo com animação suave no iOS */
   .logo-animated {
-    animation: logo-float-smooth 12s ease-in-out infinite !important;
-    filter: drop-shadow(0 0 16px rgba(220, 38, 38, 0.25)) !important;
+    animation: logo-float-smooth 10s ease-in-out infinite,
+               logo-glow-red 7s ease-in-out infinite !important;
+  }
+  
+  .logo-container-pg4::before {
+    animation-duration: 8s !important;
+  }
+  
+  .logo-container-pg4::after {
+    animation-duration: 9s !important;
+  }
+  
+  /* Glows mais intensos no iOS */
+  .logo-container-pg4::before {
+    filter: blur(35px) !important;
+  }
+  
+  .logo-container-pg4::after {
+    filter: blur(28px) !important;
   }
 }
 
@@ -533,8 +559,18 @@ All colors MUST be HSL.
   }
   
   .logo-animated {
-    animation: logo-float-smooth 14s ease-in-out infinite !important;
-    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.2)) !important;
+    animation: logo-float-smooth 11s ease-in-out infinite,
+               logo-glow-red 8s ease-in-out infinite !important;
+  }
+  
+  .logo-container-pg4::before {
+    filter: blur(30px) !important;
+    animation-duration: 8.5s !important;
+  }
+  
+  .logo-container-pg4::after {
+    filter: blur(25px) !important;
+    animation-duration: 9.5s !important;
   }
   
   /* Remove animações de fade-in que podem atrasar o carregamento */

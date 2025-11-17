@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? './' : '/',
   server: {
     host: "::",
     port: 8080,
@@ -13,6 +14,28 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'es2017', // Compatível com iOS Safari sem usar eval
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        format: 'es', // ES Modules ao invés de IIFE (evita eval)
+        // Evita uso de eval/Function no bundle
+        generatedCode: {
+          constBindings: true,
+          objectShorthand: true,
+        },
+      },
+    },
+    // Garante que não use eval
+    commonjsOptions: {
+      transformMixedEsModules: true,
     },
   },
 }));
